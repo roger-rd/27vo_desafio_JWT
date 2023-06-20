@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { todoController } from "../controllers/usuarios.controllers.js";
 import { handleErrors } from "../database/error.js";
-import  {verifyToken,reportQuery}  from "../middlewares/verifyToken.js";
+import  {verifyToken,reportQuery, verifyUsuario}  from "../middlewares/verifyToken.js";
 
 
 const router = Router()
@@ -29,7 +29,7 @@ router.post("/usuarios", reportQuery, async (req,res)=>{
     }
 })
 
-router.post("/login",reportQuery,verifyToken, async(req,res)=>{
+router.post("/login",reportQuery,verifyUsuario, async(req,res)=>{
     
     try {
         await todoController.loginUsuarios(req,res)
