@@ -38,7 +38,7 @@ export const verifyUsuario = async (req, res, next) => {
         const { rows: [userDB], rowCount } = await usuariosModel.loginUsuarios(email);
 
         if (!rowCount) {
-            throw { code: "404" };
+            throw { code: "error en email" };
         }
 
         const validatePassword = await bcrypt.compare(password, userDB.password);
